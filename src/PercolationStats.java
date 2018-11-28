@@ -18,7 +18,7 @@ public class PercolationStats {
          // return new PercolationDFS(size);
          // return new PercolationDFSFast(size);
 		 IUnionFind uf = new QuickUWPC();
-         return new PercolationUF(uf, size);
+         return new PercolationUF(size, uf);
 	 }
 	 
 	 private ArrayList<int[]> getRandomSites(int size){
