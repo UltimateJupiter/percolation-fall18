@@ -1,17 +1,50 @@
-Your name
-Your netid
+Your name Jupiter Zhu
+Your netid xz231
 
 Copy/Paste results from PercolationStats using PercolationDFS
 
+simulation data for 20 trials
+grid    mean    stddev  time
+100     0.593   0.014   0.801
+200     0.591   0.010   9.525
+400     0.590   0.006   131.194
+800     0.594   0.004   1976.940
+
+*The rest will take too long to run so I killed the program.
 
 Copy/Paste results from PercolationStats using PercolationDFSFast
 
+simulation data for 20 trials
+grid    mean    stddev  time
+100     0.593   0.014   0.067
+200     0.591   0.010   0.095
+400     0.590   0.006   0.574
+800     0.594   0.004   3.941
+
+*After 800, StackOverflow Exception was occurred.
 
 Copy/Paste results from PercolationStats using PercolationBFS
 
+simulation data for 20 trials
+grid    mean    stddev  time
+100     0.593   0.014   0.080
+200     0.591   0.010   0.100
+400     0.590   0.006   0.603
+800     0.594   0.004   4.303
+1600    0.592   0.002   27.330
+3200    0.593   0.001   152.219
 
 Copy/Paste results from PercolationStats using PercolationUF 
 with the QuickUWPC UnionFind implementation.
+
+simulation data for 20 trials
+grid    mean    stddev  time
+100     0.593   0.014   0.061
+200     0.591   0.010   0.097
+400     0.590   0.006   0.515
+800     0.594   0.004   2.624
+1600    0.592   0.002   14.532
+3200    0.593   0.001   79.836
 
 1. How does doubling the grid size affect running time (keeping # trials fixed)
 

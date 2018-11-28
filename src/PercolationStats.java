@@ -14,11 +14,11 @@ public class PercolationStats {
 	public static Random ourRandom = new Random(RANDOM_SEED);
 	
 	 private IPercolate getPercolator(int size) {
-		 return new PercolationBFS(size);
+		 // return new PercolationBFS(size);
          // return new PercolationDFS(size);
          // return new PercolationDFSFast(size);
-		 //IUnionFind uf = new QuickUWPC();
-         //return new PercolationUF(uf,size);
+		 IUnionFind uf = new QuickUWPC();
+         return new PercolationUF(uf, size);
 	 }
 	 
 	 private ArrayList<int[]> getRandomSites(int size){
