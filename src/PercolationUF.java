@@ -30,12 +30,14 @@ public class PercolationUF implements IPercolate{
     @Override
     public void open(int row, int col) {
         
-        // If it is opened, skip this action
-        if (myGrid[row][col] == true) return;
         if (! inBounds(row,col)) {
             throw new IndexOutOfBoundsException(
                     String.format("(%d,%d) not in bounds", row,col));
         }
+        
+        // If it is already opened, skip this action
+        if (myGrid[row][col] == true) return;
+        
         // Open the cell in myGrid
         myGrid[row][col] = true;
         myOpenCount += 1;
