@@ -10,7 +10,7 @@ public class PercolationBFS extends PercolationDFSFast {
     }
     
     @Override
-    public void dfs(int row, int col) {
+    protected void dfs(int row, int col) {
         
         if (! inBounds(row,col)) return;
         if (isFull(row, col) || !isOpen(row, col)) return;
