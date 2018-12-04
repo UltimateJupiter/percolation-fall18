@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Compute statistics on Percolation after performing T independent experiments on an N-by-N grid.
@@ -57,15 +58,16 @@ public class PercolationStats {
 		 return new double[] {mean,sdev,(end-start)/1e9};
 	 }
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		PercolationStats ps = new PercolationStats();
 		int trials = 20;
 		int first = 100;
-		int last = 3200;
+		int last = 6400;
 		System.out.printf("simulation data for %d trials\n",trials);
 		System.out.println("grid\tmean\tstddev\ttime");
-		for(int size = first; size <= last; size *= 2) {
-			double[] data = ps.simulate(size, trials);
+		for(int size = first; size <= last; size += 300) {
+		    
+		    double[] data = ps.simulate(size, trials);
 			System.out.printf("%d\t%1.3f\t%1.3f\t%1.3f\n",size,data[0],data[1],data[2]);
 		}
 	}

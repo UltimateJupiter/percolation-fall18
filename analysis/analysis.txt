@@ -48,8 +48,31 @@ grid    mean    stddev  time
 
 1. How does doubling the grid size affect running time (keeping # trials fixed)
 
+The running time increases by about 5 times as the grid size doubles
+
 
 2. How does doubling the number of trials affect running time.
 
+After making some adjustments to PercolationStats.java, I get the following results:
+trails  grid mean    stddev  time
+10      800  0.592   0.003   1.444
+20      800  0.594   0.004   2.863
+40      800  0.593   0.004   5.681
+80      800  0.593   0.004   10.772
+
+In the case with n trails, the random experiment is carried out n times.
+Apparently, the runtime is linearly correlated to number of trails, so doubling the number of trails also doubles the runtime.
 
 3. Estimate the largest grid size you can run in 24 hours with 20 trials. Explain your reasoning.
+
+I ran the code over gridsize from 100 to 3100 with an increase of 100 every step.
+GridSize:  100     200     300     400     500     600     700     800     900     1000    1100    1200    1300    1400    1500    1600    1700    1800    1900    2000    2100    2200    2300    2400    2500    2600    2700    2800    2900    3000    3100
+Runtime:   0.056   0.088   0.19    0.467   0.813   1.271   2.134   2.82    3.924   4.938   5.875   7.088   8.771   10.605  12.119  14.47   16.949  19.138  21.966  23.824  27.857  30.971  33.691  38.082  46.113  50.83   53.8    60.802  64.321  70.119  79.735
+
+By analyzing the algorithm and fitting the data, I believe this algorithm has a O(n^2 logn) runtime complexity.
+
+I wrote a Python script calling scipy to do the data fitting of the function time = f(x) = a * x^2 * logx
+The fitting result was a = 9.31161757e-07, so the estimation of time = 9.31161757e-07 * gridsize^2 * log(gridsize)
+
+The value of this fuction exceeds 24 * 3600s when x > 90180. Thus according to this result, I might be able to process a grid with gridsize 90179 in a day.
+However, due to the constraints on memory and cooling of CPU when processing a large grid continuously, the actual grid size should be smaller than this value.
